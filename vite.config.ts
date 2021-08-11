@@ -9,34 +9,21 @@ import WindiCSS from 'vite-plugin-windicss'
 export default defineConfig({
   resolve: {
     alias: {
-      '~/': `${path.resolve(__dirname, 'src')}/`,
+      '$/': `${path.resolve(__dirname, 'src')}/`,
     },
   },
   plugins: [
     Vue(),
-
-    // https://github.com/hannoeru/vite-plugin-pages
     Pages(),
-
-    // https://github.com/antfu/vite-plugin-components
     ViteComponents({
-      // generate `components.d.ts` for ts support with Volar
       globalComponentsDeclaration: true,
-
-      // auto import icons
       customComponentResolvers: [
-        // https://github.com/antfu/vite-plugin-icons
         ViteIconsResolver({
           componentPrefix: '',
-          // enabledCollections: ['carbon']
         }),
       ],
     }),
-
-    // https://github.com/antfu/vite-plugin-icons
     ViteIcons(),
-
-    // https://github.com/antfu/vite-plugin-windicss
     WindiCSS(),
   ],
 
