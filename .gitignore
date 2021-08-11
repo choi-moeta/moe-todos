@@ -6,8 +6,8 @@ dist
 dist-ssr
 node_modules
 components.d.ts
+.env
 # intellij stuff
 .idea/
 # logs
 *.log
-

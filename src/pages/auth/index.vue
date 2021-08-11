@@ -3,11 +3,10 @@ import { useRouter } from 'vue-router'
 import { isLoggedIn } from '$/api'
 
 const router = useRouter()
-if (!isLoggedIn())
-  router.push('/auth')
+if (isLoggedIn())
+  router.push('/')
 </script>
 
 <template>
-  <div>
-  </div>
+  <moe-auth></moe-auth>
 </template>
