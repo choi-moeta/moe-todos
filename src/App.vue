@@ -10,8 +10,15 @@ useHead({
 </script>
 
 <template>
-  <main class="px-4 py-10 text-center text-gray-700 dark:text-gray-200">
+  <main
+    class="
+      lowercase
+      text-gray-700 dark:text-gray-200
+      max-w-screen-sm w-full
+      mx-auto px-8
+    "
+  >
+    <moe-header />
     <router-view />
-    <Footer />
   </main>
 </template>
