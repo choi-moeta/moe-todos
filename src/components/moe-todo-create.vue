@@ -6,8 +6,12 @@ const emit = defineEmits<{
 const textEl = ref<HTMLDivElement | null>()
 const isCreating = ref(false)
 
-function onStartCreate() {
+async function onStartCreate() {
   isCreating.value = true
+
+  await nextTick()
+  if (textEl.value)
+    textEl.value.focus()
 }
 
 function onStopCreate() {
