@@ -1,15 +1,47 @@
+import { ref } from 'vue'
 import { supabase } from './supabase'
+import { Provider } from './types'
+
+export function getUser() {
+  return supabase.auth.user()
+}
 
 export function isLoggedIn() {
-  console.log(supabase.auth.user())
   return !!supabase.auth.user()
 }
 
-export async function authDiscord() {
-  const { user, error } = await supabase.auth.signIn({
-    provider: 'discord',
+const user = createUser()
+
+function createUser() {
+  const u = ref(getUser())
+
+  supabase.auth.onAuthStateChange((event, session) => {
+    if (session && session.user)
+      u.value = session.user
+    else
+      u.value = null
+  })
+
+  return u
+}
+
+export function useUser() {
+  return user
+}
+
+export function useLoggedIn() {
+  return computed(() => !!user.value)
+}
+
+export async function logOut() {
+  await supabase.auth.signOut()
+}
+
+export async function logInWith(provider: Provider) {
+  const { user } = await supabase.auth.signIn({
+    provider,
   }, {
-    redirectTo: 'http://localhost:3333',
+    redirectTo: `${location.origin}/auth/done`,
   })
 
   return user

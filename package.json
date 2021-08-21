@@ -6,8 +6,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@supabase/supabase-js": "^1.21.0",
-    "@vueuse/core": "^5.2.0",
+    "@supabase/supabase-js": "^1.21.3",
     "@vueuse/head": "^0.6.0",
     "vue": "^3.1.5",
     "vue-demi": "^0.11.2",
