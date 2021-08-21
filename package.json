@@ -1,5 +1,9 @@
 {
-  "private": true,
+  "name": "moe-todos",
+  "version": "0.1.0",
+  "description": "my todos",
+  "license": "MIT",
+  "author": "choi-moeta",
   "scripts": {
     "dev": "vite --port 3333 --open",
     "build": "cross-env NODE_ENV=production vite build",
