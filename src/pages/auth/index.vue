@@ -1,12 +1,20 @@
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
-import { isLoggedIn } from '$/api'
-
-const router = useRouter()
-if (isLoggedIn())
-  router.push('/')
 </script>
 
 <template>
-  <moe-auth></moe-auth>
+  <div class=" mt-24">
+    <moe-title>Вход ✌️</moe-title>
+    <moe-text class="mt-2">
+      Выбери один из сервисов. 🤙🤙
+    </moe-text>
+    <div class="mt-4 flex flex-col sm:flex-row gap-3">
+      <moe-auth-button provider="discord" class="w-full" />
+      <moe-auth-button provider="github" class="w-full" />
+    </div>
+  </div>
 </template>
+
+<route lang="yaml">
+meta:
+  onlyGuest: true
+</route>
