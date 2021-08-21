@@ -13,16 +13,24 @@ const emit = defineEmits<{
   (event: 'change', status: TodoStatus): void
 }>()
 
-function onLeftClick() {
-  if (props.status !== 'done')
-    emit('change', 'done')
-  else
-    emit('change', 'open')
-}
+const innerStatus = ref(props.status)
+watch(() => props.status, status => innerStatus.value = status)
 
-function onMiddleClick() {
-  if (props.status !== 'drop')
-    emit('change', 'drop')
+const statuses: TodoStatus[] = ['open', 'done', 'drop']
+let timer: NodeJS.Timeout
+let clicks = 0
+const delay = 500
+function onLeftClick() {
+  clicks++
+
+  clearTimeout(timer)
+  timer = setTimeout(() => {
+    emit('change', statuses[(statuses.indexOf(props.status) + clicks) % statuses.length])
+    clicks = 0
+  }, delay)
+
+  // update locally
+  innerStatus.value = statuses[(statuses.indexOf(innerStatus.value) + 1) % statuses.length]
 }
 </script>
 
@@ -37,22 +45,21 @@ function onMiddleClick() {
       flex gap-4 items-center justify-center
   "
     :class="{
-      'border-gray-500 border-opacity-75': status === 'open',
-      'text-green-500 border-green-500 border-opacity-50': status === 'done',
-      'text-red-500 border-red-500 border-opacity-50': status === 'drop',
+      'border-gray-500 border-opacity-75': innerStatus === 'open',
+      'text-green-500 border-green-500 border-opacity-50': innerStatus === 'done',
+      'text-red-500 border-red-500 border-opacity-50': innerStatus === 'drop',
     }"
     @click.left="onLeftClick"
-    @click.middle="onMiddleClick"
   >
-    <template v-if="status === 'done' || status === 'open'">
+    <template v-if="innerStatus === 'done' || innerStatus === 'open'">
       <carbon:checkmark
         class="group-hover:(block) absolute ml-0.5 w-5 h-5"
         :class="{
-          'hidden': status === 'open'
+          'hidden': innerStatus === 'open'
         }"
       />
     </template>
-    <template v-if="status === 'drop'">
+    <template v-if="innerStatus === 'drop'">
       <carbon:close class="absolute w-5 h-5" />
     </template>
   </div>
