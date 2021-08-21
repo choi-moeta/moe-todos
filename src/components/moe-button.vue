@@ -18,7 +18,7 @@ defineProps({
     "
     :class="{
       'bg-orange-500 text-white hover:(bg-orange-400)': type == 'primary',
-      'hover:bg-gray-100': type == 'ghost',
+      'hover:bg-gray-100 dark:hover:bg-gray-800': type == 'ghost',
     }"
   >
     <slot />
