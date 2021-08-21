@@ -5,6 +5,7 @@ import Pages from 'vite-plugin-pages'
 import ViteIcons, { ViteIconsResolver } from 'vite-plugin-icons'
 import ViteComponents from 'vite-plugin-components'
 import WindiCSS from 'vite-plugin-windicss'
+import ViteFonts from 'vite-plugin-fonts'
 
 export default defineConfig({
   resolve: {
@@ -25,6 +26,16 @@ export default defineConfig({
     }),
     ViteIcons(),
     WindiCSS(),
+    ViteFonts({
+      google: {
+        families: [
+          {
+            name: 'Inter',
+            styles: 'wght@400;500;600;700',
+          },
+        ],
+      },
+    }),
   ],
 
   server: {
