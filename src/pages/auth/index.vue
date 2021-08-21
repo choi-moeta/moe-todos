@@ -8,8 +8,8 @@
       Выбери один из сервисов. 🤙🤙
     </moe-text>
     <div class="mt-4 flex flex-col sm:flex-row gap-3">
-      <moe-auth-button provider="discord" class="w-full" />
-      <moe-auth-button provider="github" class="w-full" />
+      <moe-button-auth provider="discord" class="w-full" />
+      <moe-button-auth provider="github" class="w-full" />
     </div>
   </div>
 </template>
