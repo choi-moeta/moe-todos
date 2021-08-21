@@ -62,7 +62,7 @@ function onCreate() {
       @click="onStartCreate"
     >
       <carbon:add />
-      <div>Новая задача</div>
+      <div>новая задача</div>
     </button>
   </template>
 </template>
