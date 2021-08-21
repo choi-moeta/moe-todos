@@ -19,7 +19,7 @@ import { isDark, toggleDark } from '$/logic'
     <a
       class="flex hover:text-orange-500"
       rel="noreferrer"
-      href="https://github.com/antfu/vitesse-lite"
+      href="https://github.com/choi-moeta/moe-todos"
       target="_blank"
       title="source on github"
     >
