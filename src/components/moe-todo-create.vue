@@ -31,10 +31,10 @@ function onCreate() {
     </div>
     <div class="flex gap-2 mt-4">
       <moe-button @click="onCreate">
-        Create
+        Создать
       </moe-button>
       <moe-button type="ghost">
-        Cancel
+        Не
       </moe-button>
     </div>
   </div>
