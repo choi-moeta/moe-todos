@@ -35,7 +35,7 @@ function onLeftClick() {
 </script>
 
 <template>
-  <div
+  <button
     class="
       group
       w-5 h-5
@@ -62,5 +62,5 @@ function onLeftClick() {
     <template v-if="innerStatus === 'drop'">
       <carbon:close class="absolute w-5 h-5" />
     </template>
-  </div>
+  </button>
 </template>
