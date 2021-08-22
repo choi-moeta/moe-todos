@@ -21,12 +21,12 @@ const showLogIn = computed(() => {
 <template>
   <div>
     <template v-if="isLoggedIn">
-      <button class="font-semibold cursor-pointer hover:text-orange-500" @click="onLogOut">
+      <button class="font-medium cursor-pointer hover:text-orange-500" @click="onLogOut">
         выйти
       </button>
     </template>
     <template v-else-if="showLogIn">
-      <a href="/auth" class="font-semibold cursor-pointer hover:text-orange-500">
+      <a href="/auth" class="font-medium cursor-pointer hover:text-orange-500">
         войти
       </a>
     </template>
